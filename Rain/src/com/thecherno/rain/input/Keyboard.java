@@ -14,8 +14,6 @@ public class Keyboard implements KeyListener{
 		down 	= keys[KeyEvent.VK_DOWN];
 		left 	= keys[KeyEvent.VK_LEFT];
 		right 	= keys[KeyEvent.VK_RIGHT];
-		
-		if(up) System.out.println(up);
 	}
 	
 	@Override

@@ -16,8 +16,9 @@ public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1361865821520813196L;
 	public static int width = 300;
 	public static int height = width / 16 * 9;
-	public static int scale = 6;
+	public static int scale = 3;
 	public static String title = "Rain";
+	public int x = 0, y = 0;
 	
 	private Thread thread;
 	private JFrame frame;
@@ -76,7 +77,6 @@ public class Game extends Canvas implements Runnable{
 			
 			if (System.currentTimeMillis() - timer >  1000) {
 				timer += 1000;
-				System.out.println(updates + " ups, " + frames + " fps");
 				frame.setTitle(title + "  |  " + updates + " ups, " + frames + " fps");
 				updates = 0;
 				frames = 0;
@@ -86,7 +86,8 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void update() {
-		
+		x++;
+		y++;
 	}
 	
 	public void render() {
@@ -98,7 +99,7 @@ public class Game extends Canvas implements Runnable{
 		
 		screen.clear();
 		
-		screen.render();
+		screen.render(x, y);
 		
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];

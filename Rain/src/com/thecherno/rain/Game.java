@@ -16,7 +16,7 @@ public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1361865821520813196L;
 	public static int width = 300;
 	public static int height = width / 16 * 9;
-	public static int scale = 3;
+	public static int scale = 6;
 	public static String title = "Rain";
 	
 	private Thread thread;
@@ -32,7 +32,7 @@ public class Game extends Canvas implements Runnable{
 		Dimension size = new Dimension(width * scale, height * scale);
 		setPreferredSize(size);
 		
-		screen = new Screen(width, height);
+		screen = new Screen(width , height);
 		frame = new JFrame();
 	}
 	

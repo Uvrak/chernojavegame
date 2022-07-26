@@ -70,13 +70,19 @@ public class Game extends Canvas implements Runnable{
 			return;
 		}
 		
+		screen.clear();
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Automatisch generierter Erfassungsblock
+			e.printStackTrace();
+		}
 		screen.render();
 		
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
 		Graphics g = bs.getDrawGraphics();
-		
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.dispose();
 		bs.show();

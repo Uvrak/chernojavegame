@@ -1,7 +1,6 @@
 package com.thecherno.rain;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -53,9 +52,20 @@ public class Game extends Canvas implements Runnable{
 
 	@Override
 	public void run() {
+		long lastTime = System.nanoTime();
+		final double ns = 1000000000.0 / 60.0;
+		double delta = 0;
+		
 		while(running) {
-			update();
-			render();
+			long now = System.nanoTime();
+			//System.out.println(now - lastTime);
+			delta += (now - lastTime) / ns;
+			while(delta >=1) {
+				update();
+				render();
+				delta--;
+			}
+			lastTime = now;
 		}
 	}
 	
@@ -71,12 +81,12 @@ public class Game extends Canvas implements Runnable{
 		}
 		
 		screen.clear();
-		try {
+		/*try {
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
-			// TODO Automatisch generierter Erfassungsblock
 			e.printStackTrace();
 		}
+		*/
 		screen.render();
 		
 		for(int i = 0; i < pixels.length; i++) {

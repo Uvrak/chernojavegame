@@ -29,6 +29,7 @@ public class Screen {
 			time++;
 		}
 		for(int y = 0; y < height; y++) {
+			if(time >= height) break;
 			for(int x = 0; x < width; x++) {
 				pixels[time + time * width] = 0xff00ff;
 			}
